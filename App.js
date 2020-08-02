@@ -1,25 +1,20 @@
 import { StatusBar } from 'expo-status-bar';
-import React, { useState } from 'react';
-import { StyleSheet, Text, TouchableOpacity, TextInput, View, FlatList, Button } from 'react-native';
+import React, { useState, useEffect } from 'react';
+import { StyleSheet, Text, TouchableOpacity, TextInput, View, FlatList } from 'react-native';
+import TaskList from './components/taskList.js';
 
 export default function App() {
   const [task, setTask] = useState("");
-  const arr = [
-    {taskNum: 1, task: "task1"}, 
-    {taskNum: 2, task: "task2"}, 
-    {taskNum: 3, task: "task3"}, 
-  ];
+  const [taskNum, setTaskNum] = useState(0);
+  const [taskList, setTaskList] = useState([]);
 
-  const renderItem = ({item}) => (
-    <View style={styles.item}>
-      <Text>{item.task}</Text>
-      <TouchableOpacity style={styles.deleteButton}>
-        <Text style={styles.delete}>X</Text>
-      </TouchableOpacity>
-    </View>
-    
-  )
- 
+  const addNewTaskInList = () => {
+    taskList.push({taskNum: taskNum+1, task: task})
+    setTaskList( taskList )
+    setTaskNum( taskNum+1 );
+    setTask("");
+  }
+
   return (
     <View style={styles.container}>
       <Text style={styles.title}>To-do List</Text>
@@ -30,15 +25,11 @@ export default function App() {
         value={task}></TextInput>
       <TouchableOpacity
         style={styles.taskBotton}
-       
+        onPress={addNewTaskInList}
         >
         <Text style={{color: "#fff", fontWeight: 700}}>Add New Task</Text>
       </TouchableOpacity>
-      <FlatList
-        data={arr}
-        renderItem={renderItem}
-        keyExtractor={item => item.taskNum}
-      />
+      <TaskList taskList={taskList} />
     </View>
   );
 }
@@ -55,7 +46,7 @@ const styles = StyleSheet.create({
     margin: 25,
     color: "#3d3b71",
     fontSize: 50,
-    fontWeight: "700",
+    fontWeight: "bold",
   },
   input: {
     height: 40,
@@ -72,24 +63,4 @@ const styles = StyleSheet.create({
     padding: 15,
     borderRadius: 5,
   },
-  item: {
-    display: "flex",
-    flexDirection: "row",
-    justifyContent: "space-between",
-    height: 40, 
-    padding: 10,
-    margin: 5,
-    width: 300,
-    backgroundColor:"#ececec",
-  },
-  deleteButton: {
-    width: 20,
-    height: 20,
-    borderRadius: 10,
-    backgroundColor: "#3d3b71",
-  },
-  delete: {
-    color: "#fff",
-    textAlign: "center"
-  }
 });
