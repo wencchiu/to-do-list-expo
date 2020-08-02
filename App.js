@@ -1,6 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
 import React, { useState } from 'react';
-import { StyleSheet, Text, TouchableOpacity, TextInput, View, FlatList } from 'react-native';
+import { StyleSheet, Text, TouchableOpacity, TextInput, View, FlatList, Button } from 'react-native';
 
 export default function App() {
   const [task, setTask] = useState("");
@@ -13,6 +13,9 @@ export default function App() {
   const renderItem = ({item}) => (
     <View style={styles.item}>
       <Text>{item.task}</Text>
+      <TouchableOpacity style={styles.deleteButton}>
+        <Text style={styles.delete}>X</Text>
+      </TouchableOpacity>
     </View>
     
   )
@@ -27,6 +30,7 @@ export default function App() {
         value={task}></TextInput>
       <TouchableOpacity
         style={styles.taskBotton}
+       
         >
         <Text style={{color: "#fff", fontWeight: 700}}>Add New Task</Text>
       </TouchableOpacity>
@@ -69,10 +73,23 @@ const styles = StyleSheet.create({
     borderRadius: 5,
   },
   item: {
-    height: 30, 
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "space-between",
+    height: 40, 
     padding: 10,
     margin: 5,
     width: 300,
     backgroundColor:"#ececec",
+  },
+  deleteButton: {
+    width: 20,
+    height: 20,
+    borderRadius: 10,
+    backgroundColor: "#3d3b71",
+  },
+  delete: {
+    color: "#fff",
+    textAlign: "center"
   }
 });
