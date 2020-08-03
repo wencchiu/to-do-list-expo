@@ -1,18 +1,24 @@
 import { StatusBar } from 'expo-status-bar';
-import React, { useState, useEffect } from 'react';
-import { StyleSheet, Text, TouchableOpacity, TextInput, View, FlatList } from 'react-native';
+import React, { useState } from 'react';
+import { StyleSheet, Text, TouchableOpacity, TextInput, View } from 'react-native';
 import TaskList from './components/taskList.js';
 
 export default function App() {
   const [task, setTask] = useState("");
   const [taskNum, setTaskNum] = useState(0);
-  const [taskList, setTaskList] = useState([]);
+  let [taskList, setTaskList] = useState([]);
 
   const addNewTaskInList = () => {
-    taskList.push({taskNum: taskNum+1, task: task})
+    taskList = [...taskList, {taskNum: taskNum+1, task: task}];
     setTaskList( taskList )
     setTaskNum( taskNum+1 );
     setTask("");
+  }
+
+  const deleteTask = (taskNum) => {
+    const taskNumArr = taskList.map(e => e.taskNum);
+    taskList.splice(taskNumArr.indexOf(taskNum), 1);
+    setTaskList( taskList.slice() );
   }
 
   return (
@@ -29,7 +35,7 @@ export default function App() {
         >
         <Text style={{color: "#fff", fontWeight: 700}}>Add New Task</Text>
       </TouchableOpacity>
-      <TaskList taskList={taskList} />
+      <TaskList taskList={taskList} deleteTask={deleteTask} />
     </View>
   );
 }

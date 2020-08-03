@@ -1,15 +1,20 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { StyleSheet, Text, TouchableOpacity, View, FlatList } from 'react-native';
 
-export default function TaskList (props){
+export default function TaskList (props){  
     const renderItem = ({ item }) => (
         <View style={styles.item}>
           <Text>{item.task}</Text>
-          <TouchableOpacity style={styles.deleteButton}>
+          <TouchableOpacity 
+            style={styles.deleteButton}
+            onPress={() => {
+                props.deleteTask(item.taskNum)
+            }} 
+            >
             <Text style={styles.delete}>X</Text>
           </TouchableOpacity>
         </View>  
-      )
+    )
 
     return (
         <FlatList
@@ -17,10 +22,8 @@ export default function TaskList (props){
             renderItem={renderItem}
             keyExtractor={item => item.taskNum}
             extraData={props}
-      />
-
+        />
     )
-
 }
 
 const styles = StyleSheet.create({
