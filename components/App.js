@@ -1,34 +1,22 @@
 import React, { useState } from 'react';
-import { StyleSheet, Text, TouchableOpacity, TextInput, View } from 'react-native';
+import { StyleSheet, Text, TextInput, View } from 'react-native';
 import TaskList from './TaskList.js';
-import AddButton from './AddButton.js'
+import AddButton from './AddButton.js';
+import AppContainer from '../AppContainer'
 
-export default function App() {
-  const [task, setTask] = useState('');
-  let [taskList, setTaskList] = useState([]);
-
-  const addNewTaskInList = () => {
-    setTaskList([...taskList, task]);
-    setTask('');
-  }
-
-  const deleteTask = (index) => {
-    const newTaskList = taskList.filter((task, idx) => idx !== index);
-    setTaskList(newTaskList);
-  }
-
+export default function App({ task , taskList, updateTask, addTodo, deleteTodo }) {
   return (
     <View style={styles.container}>
       <Text style={styles.title}>To-do List</Text>
       <TextInput
         style={styles.input}
         placeholder="Add a todo..."
-        onChangeText={task => setTask(task)}
-        value={task}></TextInput>
-      <AddButton onPress={addNewTaskInList} />
+        onChangeText={text => updateTask(text)}
+        value={task} />
+      <AddButton task={task} addTodo={addTodo} />
       <TaskList
         taskList={taskList}
-        deleteTask={deleteTask}
+        deleteTask={() => console.log("delete")}
       />
     </View>
   );

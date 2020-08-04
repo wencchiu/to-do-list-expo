@@ -1,9 +1,11 @@
 import React from 'react';
 import { StyleSheet, Text, TouchableOpacity } from 'react-native';
 
-export default function AddButton () {
+export default function AddButton ({ task, addTodo }) {
     return(
-        <TouchableOpacity style={styles.taskBotton}>
+        <TouchableOpacity 
+            style={styles.taskBotton} 
+            onPress={() => addTodo(task) }>
           <Text style={{ color: "#fff", fontWeight: '700' }}>Add New Task</Text>
         </TouchableOpacity>
     )
