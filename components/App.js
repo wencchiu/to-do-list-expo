@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { StyleSheet, Text, TouchableOpacity, TextInput, View } from 'react-native';
 import TaskList from './TaskList.js';
+import AddButton from './AddButton.js'
 
 export default function App() {
   const [task, setTask] = useState('');
@@ -24,12 +25,7 @@ export default function App() {
         placeholder="Add a todo..."
         onChangeText={task => setTask(task)}
         value={task}></TextInput>
-      <TouchableOpacity
-        style={styles.taskBotton}
-        onPress={addNewTaskInList}
-      >
-        <Text style={{ color: "#fff", fontWeight: '700' }}>Add New Task</Text>
-      </TouchableOpacity>
+      <AddButton onPress={addNewTaskInList} />
       <TaskList
         taskList={taskList}
         deleteTask={deleteTask}
@@ -60,11 +56,5 @@ const styles = StyleSheet.create({
     borderColor: "#3d3b71",
     borderWidth: 1,
 
-  },
-  taskBotton: {
-    backgroundColor: "#3d3b71",
-    margin: 10,
-    padding: 15,
-    borderRadius: 5,
   },
 });
