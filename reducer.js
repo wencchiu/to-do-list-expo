@@ -5,19 +5,23 @@ const initialState = {
     taskList: ['sss']
 }
 
+
+
 export default const todoApp = ( state = initialState, action ) => {
     switch(action.type){
         case ADD_TODO:
             return Object.assign({}, state, {
-                taskList: [ ...state.taskList,task ]
-            } ),
+                taskList: [ ...state.taskList, state.task ]
+            } );
 
         case DELETE_TODO:
-            return state,
-
+            const newTaskList = state.taskList.filter((item, index) => action.index !== index )
+            return Object.assign({}, state, {
+                taskList: [ ...newTaskList ]
+            } );
 
         default: 
-            return state,
+            return state;
     }
 
     
