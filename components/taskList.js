@@ -1,15 +1,14 @@
 import React from 'react';
 import { StyleSheet, Text, TouchableOpacity, View, FlatList } from 'react-native';
 
-// export default TaskList = (Props) => {
-export default function TaskList(props) {
+export const TaskList = props => {
   const renderItem = ({ item, index }) => (
     <View style={styles.item}>
       <Text>{item}</Text>
       <TouchableOpacity
         style={styles.deleteButton}
         onPress={() => {
-          props.deleteTask(index);
+          props.deleteTodo(index);
         }}
       >
         <Text style={styles.delete}>X</Text>

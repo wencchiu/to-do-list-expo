@@ -1,10 +1,15 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { StyleSheet, Text, TextInput, View } from 'react-native';
-import TaskList from './TaskList.js';
+import { TaskList } from './TaskList.js';
 import AddButton from './AddButton.js';
-import AppContainer from '../AppContainer'
 
-export default function App({ task , taskList, updateTask, addTodo, deleteTodo }) {
+export default function App({ 
+  task, 
+  taskList, 
+  updateTask, 
+  addTodo, 
+  deleteTodo 
+}) {
   return (
     <View style={styles.container}>
       <Text style={styles.title}>To-do List</Text>
@@ -16,7 +21,7 @@ export default function App({ task , taskList, updateTask, addTodo, deleteTodo }
       <AddButton task={task} addTodo={addTodo} />
       <TaskList
         taskList={taskList}
-        deleteTask={() => console.log("delete")}
+        deleteTodo={deleteTodo}
       />
     </View>
   );
