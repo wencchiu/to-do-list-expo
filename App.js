@@ -5,22 +5,14 @@ import TaskList from './components/TaskList.js';
 
 export default function App() {
   const [task, setTask] = useState('');
-  const [taskNum, setTaskNum] = useState(0);
   let [taskList, setTaskList] = useState([]);
 
   const addNewTaskInList = () => {
-    // const newTakList = [...taskList, { taskNum: taskNum + 1, task }];
-    // // taskList = [...taskList, { taskNum: taskNum + 1, task: task }];
-    // setTaskList(newTakList)
-    // setTaskNum(taskNum + 1);
-    // setTask('');
     setTaskList([...taskList, task]);
     setTask('');
   }
 
-  const deleteTask = (taskNum, index) => {
-    // const taskNumArr = taskList.map((task, idx) => idx);
-    // taskList.splice(taskNumArr.indexOf(taskNum), 1);
+  const deleteTask = (index) => {
     const newTaskList = taskList.filter((task, idx) => idx !== index);
     setTaskList(newTaskList);
   }

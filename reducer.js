@@ -1,28 +1,15 @@
 import { ADD_TODO, DELETE_TODO } from "./actions";
 
 const initialState = {
-    task: "",
-    taskNum: 0,
-    todoList: [
-        {
-            taskNum:999,
-            task: "yoooo",
-        },
-
-    ]
+    task: '',
+    taskList: ['sss']
 }
 
 export default const todoApp = ( state = initialState, action ) => {
     switch(action.type){
         case ADD_TODO:
             return Object.assign({}, state, {
-                todoList: {
-                    ...state.todoList,
-                    {
-                        taskNum: todo.taskNum,
-                        task: todo.task
-                    }
-                }
+                taskList: [ ...state.taskList,task ]
             } ),
 
         case DELETE_TODO:

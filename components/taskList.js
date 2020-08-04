@@ -9,7 +9,7 @@ export default function TaskList(props) {
       <TouchableOpacity
         style={styles.deleteButton}
         onPress={() => {
-          props.deleteTask(item.taskNum, index);
+          props.deleteTask(index);
         }}
       >
         <Text style={styles.delete}>X</Text>
@@ -21,7 +21,7 @@ export default function TaskList(props) {
     <FlatList
       data={props.taskList}
       renderItem={renderItem}
-      keyExtractor={item => item.taskNum}
+      keyExtractor={(item, index) => index}
       extraData={props}
     />
   )
