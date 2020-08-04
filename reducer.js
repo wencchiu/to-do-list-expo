@@ -5,9 +5,7 @@ const initialState = {
     taskList: ['sss']
 }
 
-
-
-export default const todoApp = ( state = initialState, action ) => {
+export default function todoApp( state = initialState, action ) {
     switch(action.type){
         case ADD_TODO:
             return Object.assign({}, state, {

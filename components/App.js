@@ -1,7 +1,6 @@
-import { StatusBar } from 'expo-status-bar';
 import React, { useState } from 'react';
 import { StyleSheet, Text, TouchableOpacity, TextInput, View } from 'react-native';
-import TaskList from './components/TaskList.js';
+import TaskList from './TaskList.js';
 
 export default function App() {
   const [task, setTask] = useState('');
