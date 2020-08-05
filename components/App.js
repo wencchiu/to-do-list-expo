@@ -1,14 +1,14 @@
-import React from 'react';
-import { StyleSheet, Text, TextInput, View } from 'react-native';
-import { TaskList } from './TaskList.js';
-import AddButton from './AddButton.js';
+import React from "react";
+import { StyleSheet, Text, TextInput, View } from "react-native";
+import { TaskList } from "./TaskList.js";
+import AddButton from "./AddButton.js";
 
-export default function App({ 
-  task, 
-  taskList, 
-  updateTask, 
-  addTodo, 
-  deleteTodo 
+export default function App({
+  task,
+  taskList,
+  updateTask,
+  addTodo,
+  deleteTodo,
 }) {
   return (
     <View style={styles.container}>
@@ -16,13 +16,11 @@ export default function App({
       <TextInput
         style={styles.input}
         placeholder="Add a todo..."
-        onChangeText={text => updateTask(text)}
-        value={task} />
-      <AddButton task={task} addTodo={addTodo} />
-      <TaskList
-        taskList={taskList}
-        deleteTodo={deleteTodo}
+        onChangeText={(text) => updateTask(text)}
+        value={task}
       />
+      <AddButton task={task} addTodo={addTodo} />
+      <TaskList taskList={taskList} deleteTodo={deleteTodo} />
     </View>
   );
 }
@@ -30,10 +28,9 @@ export default function App({
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-
+    backgroundColor: "#fff",
+    alignItems: "center",
+    justifyContent: "center",
   },
   title: {
     margin: 25,
@@ -48,6 +45,5 @@ const styles = StyleSheet.create({
     padding: 10,
     borderColor: "#3d3b71",
     borderWidth: 1,
-
   },
 });

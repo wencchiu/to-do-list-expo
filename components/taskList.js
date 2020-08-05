@@ -1,7 +1,13 @@
-import React from 'react';
-import { StyleSheet, Text, TouchableOpacity, View, FlatList } from 'react-native';
+import React from "react";
+import {
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+  FlatList,
+} from "react-native";
 
-export const TaskList = props => {
+export const TaskList = (props) => {
   const renderItem = ({ item, index }) => (
     <View style={styles.item}>
       <Text>{item}</Text>
@@ -23,8 +29,8 @@ export const TaskList = props => {
       keyExtractor={(item, index) => index}
       extraData={props}
     />
-  )
-}
+  );
+};
 
 const styles = StyleSheet.create({
   item: {
@@ -45,7 +51,6 @@ const styles = StyleSheet.create({
   },
   delete: {
     color: "#fff",
-    textAlign: "center"
-  }
-
-})
+    textAlign: "center",
+  },
+});
