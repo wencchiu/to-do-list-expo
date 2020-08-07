@@ -1,4 +1,4 @@
-import { UPDATE_TASK, ADD_TODO, DELETE_TODO } from "./actions";
+import { UPDATE_TASK, ADD_TODO, DELETE_TODO, FETCH_TODOS } from "./actions";
 
 const initialState = {
   task: "",
@@ -25,6 +25,9 @@ export default function todoApp(state = initialState, action) {
       return Object.assign({}, state, {
         taskList: [...newTaskList],
       });
+
+    case FETCH_TODOS:
+      return action.data;
 
     default:
       return state;

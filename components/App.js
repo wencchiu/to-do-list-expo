@@ -9,6 +9,7 @@ export default function App({
   updateTask,
   addTodo,
   deleteTodo,
+  fetchTodos,
 }) {
   return (
     <View style={styles.container}>
@@ -20,7 +21,11 @@ export default function App({
         value={task}
       />
       <AddButton task={task} addTodo={addTodo} />
-      <TaskList taskList={taskList} deleteTodo={deleteTodo} />
+      <TaskList
+        taskList={taskList}
+        deleteTodo={deleteTodo}
+        fetchTodos={fetchTodos}
+      />
     </View>
   );
 }

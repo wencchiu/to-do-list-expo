@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import {
   StyleSheet,
   Text,
@@ -21,6 +21,10 @@ export const TaskList = (props) => {
       </TouchableOpacity>
     </View>
   );
+
+  useEffect(() => {
+    props.fetchTodos();
+  }, props);
 
   return (
     <FlatList

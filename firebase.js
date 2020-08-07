@@ -15,8 +15,4 @@ firebase.initializeApp(firebaseConfig);
 export const db = firebase.firestore();
 export const ref = db.collection("todoApp").doc("todos");
 
-// ref.get().then((doc) => {
-//   console.log(doc.data());
-// });
-
 export default firebase;
