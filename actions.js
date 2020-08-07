@@ -6,8 +6,6 @@ export const DELETE_TODO = "DELETE_TODO";
 export const FETCH_TODOS = "FETCH_TODOS";
 
 export const updateTask = (text) => ({ type: UPDATE_TASK, text });
-// export const addTodo = (task) => ({ type: ADD_TODO, task });
-// export const deleteTodo = (index) => ({ type: DELETE_TODO, index });
 
 export const addTodo = (task) => async (dispatch) => {
   ref
@@ -15,6 +13,12 @@ export const addTodo = (task) => async (dispatch) => {
     .then(() => {
       console.log("addtodo");
     });
+};
+
+export const deleteTodo = (task) => async (dispatch) => {
+  ref.update({
+    taskList: firebase.firestore.FieldValue.arrayRemove(task),
+  });
 };
 
 export const fetchTodos = () => async (dispatch) => {

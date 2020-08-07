@@ -14,7 +14,7 @@ export const TaskList = (props) => {
       <TouchableOpacity
         style={styles.deleteButton}
         onPress={() => {
-          props.deleteTodo(index);
+          props.deleteTodo(item);
         }}
       >
         <Text style={styles.delete}>X</Text>
